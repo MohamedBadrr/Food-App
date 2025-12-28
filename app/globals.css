@@ -117,4 +117,11 @@
   .font-playfair {
     font-family: var(--font-playfair);
   }
+   .hover-scale {
+    @apply transition-all duration-300 cursor-pointer;
+  }
+
+  .hover-scale:hover {
+    @apply scale-105;
+  }
 }

@@ -9,19 +9,22 @@ import Image from "next/image";
 
 const WhatOurCustomerSays = () => {
   return (
-    <div className="container py-30 flex  w-full flex-col items-center gap-15 ">
+    <div className="container py-30 flex  w-full flex-col items-center gap-15">
       <h1 className="text-[45px] font-playfair ">What Our Customers Say</h1>
       <Carousel
         opts={{
           align: "start",
-          loop: true
+          loop: true,
         }}
-        className="w-full"
+        className="w-full  "
       >
-        <CarouselContent>
+        <CarouselContent className="">
           {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-              <div className="p-1">
+            <CarouselItem
+              key={index}
+              className="md:basis-1/2 lg:basis-1/3 w-full"
+            >
+              <div className="p-1 flex! items-center! justify-center!">
                 <div className="bg-neutral-100 p-8.75 rounded-lg flex flex-col gap-8 w-full max-w-86.5">
                   <div className="flex flex-col gap-4">
                     <h4 className="text-primary font-semibold ">
@@ -54,8 +57,10 @@ const WhatOurCustomerSays = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <div className="hidden md:block">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
       </Carousel>
     </div>
   );

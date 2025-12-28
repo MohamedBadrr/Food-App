@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <div className="bg-[url('/assets/bg.png')] bg-cover bg-center h-screen w-full flex items-center justify-center flex-col ">
+    <div className="bg-[url('/assets/bg.png')] bg-full bg-center h-screen w-full flex items-center justify-center flex-col ">
       <div className="items-center flex justify-center flex-col w-full max-w-166.75 gap-8">
-        <h1 className="leading-24 text-[100px] text-center font-playfair">
+        <h1 className="leading-24 px-5 text-[80px] md:text-[100px] text-center font-playfair">
           Best food for your taste
         </h1>
         <p className="text-center max-w-100.25  flex items-center justify-center text-base">

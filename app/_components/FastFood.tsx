@@ -6,7 +6,7 @@ const FastFood = () => {
   return (
     <div className="bg-neutral-50">
       <div className="container py-30 ">
-        <div className="flex items-center justify-center gap-20 ">
+        <div className="flex items-center justify-center gap-20 flex-wrap md:flex-nowrap">
           <div className="flex  gap-2">
             <div>
               <Image
@@ -34,9 +34,9 @@ const FastFood = () => {
               />
             </div>
           </div>
-          <div className=" flex flex-col gap-12">
+          <div className=" flex flex-col items-center justify-center md:items-start md:justify-start gap-12">
             <div className="flex flex-col gap-4">
-              <h2 className="text-[50px] font-playfair">
+              <h2 className="text-[50px] font-playfair text-center md:text-start">
                 Fastest Food Delivery in City
               </h2>
               <p className="text-[12px] md:w-75">

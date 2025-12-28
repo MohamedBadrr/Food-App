@@ -3,7 +3,7 @@ import Image from "next/image";
 const Events = () => {
   return (
     <div className=" container py-30 flex gap-15 flex-col ">
-      <h2 className="w-full max-w-168.75 font-medium font-playfair text-[55px]">
+      <h2 className="w-full max-w-168.75 font-medium font-playfair text-center md:text-start text-[40px] md:text-[55px]">
         {" "}
         We also offer unique services for your events
       </h2>
@@ -19,6 +19,7 @@ const Events = () => {
                 alt={`${event.title} image`}
                 width={206}
                 height={120}
+                content="all"
               />
             </div>
             <div className="flex flex-col gap-4">
