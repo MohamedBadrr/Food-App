@@ -25,3 +25,18 @@ export type ContactUsFormValues = {
   subject: string;
   message: string;
 }
+
+export type Item = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+};
+
+export type CustomError = {
+  errorBody: Error;
+  message: string;
+  errors?: Record<string, string[]>;
+  status: number;
+};

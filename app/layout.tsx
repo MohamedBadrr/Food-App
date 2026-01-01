@@ -3,7 +3,8 @@ import { Roboto, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer/Footer";
-
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import "react-loading-skeleton/dist/skeleton.css";
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -28,12 +29,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${roboto.variable} ${playfair.variable} antialiased`}>
-        <Header />
+      <ReactQueryProvider>
+        <body className={`${roboto.variable} ${playfair.variable} antialiased`}>
+          <Header />
 
-        {children}
-        <Footer />
-      </body>
+          {children}
+          <Footer />
+        </body>
+      </ReactQueryProvider>
     </html>
   );
 }

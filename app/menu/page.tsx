@@ -1,8 +1,25 @@
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 import MenuFilters from "./MenuFilters";
 import MenuItems from "./MenuItems";
 import OrderApps from "./OrderApps";
+import { QUERY_KEYS } from "@/constants/QueryKeies";
+import { getProducts } from "@/services/products/getProducts";
+import { getCategories } from "@/services/categories/getCategories";
 
-const Menu = () => {
+const Menu = async () => {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: QUERY_KEYS.PRODUCTS,
+    queryFn: getProducts,
+  });
+  await queryClient.prefetchQuery({
+    queryKey: QUERY_KEYS.CATEGORIES,
+    queryFn: getCategories,
+  });
   return (
     <div className="container">
       <div className="flex flex-col gap-10 ">
@@ -13,8 +30,10 @@ const Menu = () => {
             need to change to create a truly happens.
           </p>
           <div className="mt-3 space-y-20 mb-22">
-            <MenuFilters />
-            <MenuItems />
+            <HydrationBoundary state={dehydrate(queryClient)}>
+              <MenuFilters />
+              <MenuItems />
+            </HydrationBoundary>
             <OrderApps />
           </div>
         </div>

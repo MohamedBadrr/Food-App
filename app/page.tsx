@@ -6,7 +6,7 @@ import FastFood from "./_components/FastFood";
 import WhatOurCustomerSays from "./_components/WhatOurCustomerSays";
 import OurBlog from "./_components/OurBlog";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <Hero />
@@ -14,7 +14,7 @@ export default function Home() {
       <ProvideHealthy />
       <Events />
       <FastFood />
-      {/* <WhatOurCustomerSays /> */}
+      <WhatOurCustomerSays />
       <OurBlog />
     </main>
   );

@@ -1,87 +1,45 @@
+"use client";
 import MenuItem from "./MenuItem";
+import { getProducts } from "@/services/products/getProducts";
+import { QUERY_KEYS } from "@/constants/QueryKeies";
+import { useCustomQuery } from "../hooks/useCustomQuery";
+import WithLoadingAndErrors from "@/HOCs/WithLoadingAndErrors";
+import MenuPageLoading from "@/skeletons/product/MenuPageLoading";
 
 const MenuItems = () => {
+  const { data, isLoading, isError } = useCustomQuery({
+    queryKey: QUERY_KEYS.PRODUCTS,
+    queryFn: getProducts,
+  });
+  console.log("data", data);
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {MENU_ITEMS.map((item) => (
-        <MenuItem
-          description={item.description}
-          id={item.id}
-          image={item.image}
-          price={item.price}
-          title={item.title}
-          key={item.id}
-        />
-      ))}
-    </div>
+    <>
+      <WithLoadingAndErrors
+        LoadingComponent={<MenuPageLoading />}
+        isError={isError}
+        isLoading={isLoading}
+        lengthOfData={data?.length as number}
+        noDataMessage="No items for now, coming soon."
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {data?.map((item) => (
+            <MenuItem
+              description={item.description}
+              id={item.id}
+              image={item.image}
+              price={item.price}
+              key={item.id}
+              created_at={item.created_at}
+              name={item.name}
+              product_extras={item.product_extras}
+              product_sizes={item.product_sizes}
+            />
+          ))}
+        </div>
+      </WithLoadingAndErrors>
+    </>
   );
 };
 
 export default MenuItems;
-
-export interface MenuItem {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-}
-
-export const MENU_ITEMS: MenuItem[] = [
-  {
-    id: 1,
-    title: "Fried Eggs",
-    price: 9.99,
-    description: "Made with eggs, lettuce, salt, oil and other ingredients.",
-    image: "/assets/eggMenu.png",
-  },
-  {
-    id: 2,
-    title: "Hawaiian Pizza",
-    price: 15.99,
-    description: "Made with eggs, lettuce, salt, oil and other ingredients.",
-    image: "/assets/eggMenu.png",
-  },
-  {
-    id: 3,
-    title: "Martinez Cocktail",
-    price: 7.25,
-    description: "Made with eggs, lettuce, salt, oil and other ingredients.",
-    image: "/assets/eggMenu.png",
-  },
-  {
-    id: 4,
-    title: "Butterscotch Cake",
-    price: 20.99,
-    description: "Made with eggs, lettuce, salt, oil and other ingredients.",
-    image: "/assets/eggMenu.png",
-  },
-  {
-    id: 5,
-    title: "Mint Lemonade",
-    price: 5.89,
-    description: "Made with eggs, lettuce, salt, oil and other ingredients.",
-    image: "/assets/eggMenu.png",
-  },
-  {
-    id: 6,
-    title: "Chocolate Icecream",
-    price: 18.05,
-    description: "Made with eggs, lettuce, salt, oil and other ingredients.",
-    image: "/assets/eggMenu.png",
-  },
-  {
-    id: 7,
-    title: "Cheese Burger",
-    price: 12.55,
-    description: "Made with eggs, lettuce, salt, oil and other ingredients.",
-    image: "/assets/eggMenu.png",
-  },
-  {
-    id: 8,
-    title: "Classic Waffles",
-    price: 12.99,
-    description: "Made with eggs, lettuce, salt, oil and other ingredients.",
-    image: "/assets/eggMenu.png",
-  },
-];

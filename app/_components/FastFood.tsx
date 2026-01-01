@@ -1,7 +1,6 @@
 import HeadingWithTitle from "@/components/shared/HeadingWithTitle";
 import { Clock, Shell, ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 
 const FastFood = () => {
   return (

@@ -1,16 +1,15 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React from "react";
+import AddToCardButton from "./AddToCardButton";
+import { Product } from "@/types/Products";
 
-const MenuItem = (props: {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-}) => {
+const MenuItem = (props: Product) => {
   return (
-    <div className="border border-neutral-400 w-full  hover:shadow-xl hover:bg-primary hover:text-white group md:max-w-76.5 rounded-lg">
+    <div
+      className="border border-neutral-400 w-full 
+                  hover:shadow-xl hover:bg-primary hover:text-white 
+                  group md:max-w-76.5 rounded-lg
+                  transition-all duration-300"
+    >
       <Image
         alt="menu image"
         src={props.image}
@@ -19,20 +18,23 @@ const MenuItem = (props: {
         height={306}
       />
       <div className="flex flex-col items-center justify-center gap-2 px-2">
-        <p className="font-bold text-[22px] text-primary group-hover:text-white font-playfair">
+        <p className="font-bold text-[22px] text-primary group-hover:text-white font-playfair transition-all duration-300 ">
           $ {props.price}
         </p>
-        <p className="italic [22px] font-semibold">{props.title}</p>
+        <p className="italic [22px] font-semibold">{props.name}</p>
         <p className="text-[12px] text-center">{props.description}</p>
-        <Button
-          className="rounded-full w-full my-2 hover:bg-white/90  hover:text-primary group-hover:bg-white group-hover:text-primary  "
-          size={"sm"}
-        >
-          {" "}
-          Add Dish{" "}
-        </Button>
+        <AddToCardButton
+          description={props.description}
+          id={props.id}
+          image={props.image}
+          price={props.price}
+          name={props.name}
+          key={props.id}
+          created_at={props.created_at}
+          product_extras={props.product_extras}
+          product_sizes={props.product_sizes}
+        />
       </div>
-      <div></div>
     </div>
   );
 };
