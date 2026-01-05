@@ -2,15 +2,16 @@ import { CartItem } from "@/store/cart.store";
 
 export const getSubTotal = (cart: CartItem[]) => {
   return cart.reduce((total, cartItem) => {
-    // item.basePrice + item.size.price + extra prices
     const extrasTotal = cartItem.extras?.reduce(
       (sum, extra) => sum + (extra.price || 0),
       0
-    );
+    ) || 0;
 
     const itemTotal =
-      cartItem.basePrice + (extrasTotal || 0) + (cartItem.size?.price || 0);
+      cartItem.basePrice + 
+      (cartItem.size?.price || 0) + 
+      extrasTotal;
 
-    return total + itemTotal * cartItem.quantity!;
+    return total + (itemTotal * (cartItem.quantity || 1));
   }, 0);
 };

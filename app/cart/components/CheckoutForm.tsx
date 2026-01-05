@@ -9,11 +9,11 @@ import { getTotalAmount } from "@/lib/getTotalAmount";
 import { useCart } from "@/store/cart.store";
 
 function CheckoutForm() {
-  const { cart, removeItemFromCart } = useCart();
+  const { cart } = useCart();
 
   const totalAmount = getTotalAmount(cart);
   return (
-    <div className="grid gap-6 bg-gray-100 rounded-md p-4">
+    <div className="grid gap-6 bg-gray-100 rounded-md p-4 h-109!">
       <h2 className="text-2xl text-black font-semibold">Checkout</h2>
       <form>
         <div className="grid gap-4">

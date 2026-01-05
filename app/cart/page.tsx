@@ -1,14 +1,12 @@
-import HeadingWithTitle from "@/components/shared/HeadingWithTitle";
-import CartItems from "./components/CartItems";
 import CheckoutForm from "./components/CheckoutForm";
-import Heading from "@/components/shared/Heading";
+import CartItems from "./components/CartItems";
 
 const Page = () => {
   return (
     <main>
-      <section className="py-5 ">
+      <section className="py-5 min-h-screen">
         <div className="container">
-          <h2 className="text-[50px] text-primary mb-5 font-playfair text-center ">
+          <h2 className="text-[50px] text-primary mb-10 font-playfair text-center ">
             Shopping Cart
           </h2>
 

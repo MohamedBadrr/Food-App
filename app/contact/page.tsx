@@ -2,9 +2,6 @@
 import InputField from "@/components/fields/InputField";
 import HeadingWithTitle from "@/components/shared/HeadingWithTitle";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { ContactUsValidationSchema } from "@/validations";
 import { Form, Formik } from "formik";
 
@@ -29,7 +26,7 @@ const ContactUs = () => {
         <HeadingWithTitle
           title="Contact Us"
           containerClassName="flex items-center"
-          subTitleClassName="text-neutral text-center text-[16px] w-1/2!"
+          subTitleClassName="text-neutral text-center text-[16px] "
           subTitle="We consider all the drivers of change gives you the components you need to change to create a truly happens."
         />
 

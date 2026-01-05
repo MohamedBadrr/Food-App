@@ -34,7 +34,7 @@ const MenuFilters = ({ setFilter }: { setFilter: (value: string) => void }) => {
             setFilter("");
           }}
           variant={selectedFilter === "All" ? "default" : "outline"}
-          className="my-2 md:my-0"
+          className="mt-2 md:my-0 py-0! rounded-md!"
         >
           All
         </Button>
@@ -46,7 +46,7 @@ const MenuFilters = ({ setFilter }: { setFilter: (value: string) => void }) => {
               setFilter(filter.id);
             }}
             variant={selectedFilter === filter.name ? "default" : "outline"}
-            className="my-2 md:my-0"
+            className="mt-2 md:my-0 py-0! rounded-md!"
           >
             {filter.name}
           </Button>
