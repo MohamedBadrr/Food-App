@@ -1,26 +1,29 @@
-export interface ProductSize {
-  id: string;
-  size: "SMALL" | "MEDIUM" | "LARGE";        // e.g., "SAMLL" (likely a typo for "SMALL"), "MEDIUM", "LARGE"
-  price: number;
-  product_id: string;
+import "next-auth";
+import "next-auth/jwt";
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      email: string;
+      name: string;
+      image?: string | null;
+      role: "USER" | "ADMIN";
+    };
+  }
+
+  interface User {
+    id: string;
+    email: string;
+    name: string;
+    image?: string | null;
+    role: "USER" | "ADMIN";
+  }
 }
 
-export interface ProductExtra {
-  id: string;
-  name: string;        // e.g., "Cola", "Fries"
-  price: number;
-  product_id: string;
+declare module "next-auth/jwt" {
+  interface JWT {
+    id?: string;
+    role: "USER" | "ADMIN";
+  }
 }
-
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  image: string;       // URL to the product image
-  created_at: string;  // ISO timestamp string
-  product_sizes: ProductSize[];
-  product_extras: ProductExtra[];
-  category_id: string,
-}
-

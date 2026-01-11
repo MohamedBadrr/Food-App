@@ -49,6 +49,7 @@ async function Header() {
             </Link>
             <Link href={"/auth/login"}>
               <Button
+              
                 className="py-0!  text-[13px]! font-semibold font-playfair italic"
                 variant={"outline"}
               >

@@ -14,10 +14,8 @@ const NavBarDrawer = () => {
   return (
     <Drawer direction="left">
       <DrawerTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Button className="lg:hidden " variant={"ghost"}>
-            <Menu className="h-8! w-8! mt-2" />
-          </Button>
+        <Button className="lg:hidden" size="icon" variant={"ghost"}>
+          <Menu className="h-8! w-8! mt-2" />
         </Button>
       </DrawerTrigger>
 
