@@ -34,34 +34,32 @@ const SignUp = () => {
   const router = useRouter();
 
   const handleSubmitSignUp = async (values: SignUpFormValues) => {
-    try {
-      const result = await signup({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      });
+    const result = await signup({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
 
-      if (!result.success) {
-        toast.error(result.error || "Sign up failed");
-        return;
-      }
-
-      // Automatically sign in after successful registration
-      const signInResult = await signIn("credentials", {
-        email: values.email,
-        password: values.password,
-        redirect: false,
-      });
-
-      if (signInResult?.error) {
-        toast.error("An error occurred while Signing in.");
-      } else if (signInResult?.ok) {
-        router.push("/");
-        router.refresh();
-      }
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "An error occurred");
+    if (!result.success) {
+      throw new Error(result.error || "Sign up failed");
     }
+
+    // Automatically sign in after successful registration
+    const signInResult = await signIn("credentials", {
+      email: values.email,
+      password: values.password,
+      redirect: false,
+    });
+
+    if (signInResult?.error) {
+      throw new Error("An error occurred while Signing in.");
+    }
+
+    if (!signInResult?.ok) {
+      throw new Error("An error occurred while Signing in.");
+    }
+
+    return signInResult;
   };
 
   const { mutate, isPending } = useCustomMutation({
@@ -72,7 +70,7 @@ const SignUp = () => {
       router.refresh();
     },
     onError: (error) => {
-      toast.error(error.message ? error.message : "An Error Occurred");
+      toast.error(error.message || "An Error Occurred");
     },
   });
 

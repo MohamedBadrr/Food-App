@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Routes } from "@/constants/enums";
 import { DrawerClose } from "../ui/drawer";
 
 type NavbarProps = {
@@ -46,9 +45,9 @@ const Navbar = ({ closeOnNavigate = false }: NavbarProps) => {
 export default Navbar;
 
 const links = [
-  { title: "Home", href: Routes.ROOT },
-  { title: "Menu", href: `/${Routes.MENU}` },
-  { title: "About", href: `/${Routes.ABOUT}` },
-  { title: "Contact us", href: `/${Routes.CONTACT}` },
-  { title: "Our Blog", href: `/${Routes.BLOG}` },
+  { title: "Home", href: "/" },
+  { title: "Menu", href: `/menu` },
+  { title: "About", href: `about` },
+  { title: "Contact us", href: `contact` },
+  { title: "Our Blog", href: `/blog` },
 ];

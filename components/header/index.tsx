@@ -6,9 +6,11 @@ import NavBarDrawer from "./NavBarDrawer";
 import { Button } from "../ui/button";
 import AuthButton from "./AuthButton";
 import { auth } from "@/auth";
+import { getMe } from "@/services/user/getMe";
 
 async function Header() {
   const session = await auth();
+  const profile = await getMe();
 
   return (
     <header className=" border-b  fixed w-full bg-white z-50 border-primary  pt-5 pb-4 md:py-2">
@@ -33,21 +35,32 @@ async function Header() {
 
         <div className="flex items-center justify-center gap-3">
           <div className="hidden lg:flex items-center justify-center gap-2">
-            <AuthButton session={session} />
             <Link href={"/auth/login"}>
               <Button
-              
                 className="py-0!  text-[13px]! font-semibold font-playfair italic"
                 variant={"outline"}
               >
                 Book A Table
               </Button>
             </Link>
+
+            {session ? (
+              <AuthButton profile={profile} session={session} />
+            ) : (
+              <Link href={"/auth/login"}>
+                <Button
+                  className="py-0!  text-[13px]! font-semibold font-playfair italic"
+                  variant={"default"}
+                >
+                  Login
+                </Button>
+              </Link>
+            )}
           </div>
+          <CartButton />
           <div className="block lg:hidden">
             <NavBarDrawer session={session} />
           </div>
-          <CartButton />
         </div>
       </div>
     </header>

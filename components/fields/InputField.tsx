@@ -1,3 +1,4 @@
+// "use client";
 import { useState } from "react";
 import { useFormikContext, FormikValues } from "formik";
 import { Label } from "../ui/label";
@@ -13,6 +14,7 @@ interface InputFieldProps<T extends FormikValues> {
   type?: "input" | "textarea" | "password" | "email";
   className?: string;
   labelClassName?: string;
+  disabled?: boolean;
 }
 
 const InputField = <T extends FormikValues>({
@@ -22,6 +24,7 @@ const InputField = <T extends FormikValues>({
   type = "input",
   className = "",
   labelClassName = "",
+  disabled = false,
 }: InputFieldProps<T>) => {
   const { values, handleBlur, errors, touched, handleChange } =
     useFormikContext<T>();
@@ -48,6 +51,7 @@ const InputField = <T extends FormikValues>({
           value={values[name]}
           onChange={handleChange}
           onBlur={handleBlur}
+          disabled={disabled}
         />
       ) : (
         <>
@@ -59,6 +63,7 @@ const InputField = <T extends FormikValues>({
             value={values[name]}
             onChange={handleChange}
             onBlur={handleBlur}
+            disabled={disabled}
           />
           {type === "password" && (
             <button

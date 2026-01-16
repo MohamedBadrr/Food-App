@@ -8,29 +8,68 @@ export enum Languages {
   ARABIC = "ar",
 }
 
-export enum Routes {
-  ROOT = "/",
-  MENU = "menu",
-  ABOUT = "about",
-  CONTACT = "contact",
-  AUTH = "auth",
-  CART = "cart",
-  PROFILE = "profile",
-  ADMIN = "admin",
-  BLOG = "blog"
-}
 
-export enum Pages {
-  LOGIN = "signin",
-  Register = "signup",
-  FORGOT_PASSWORD = "forgot-password",
-  CATEGORIES = "categories",
-  MENU_ITEMS = "menu-items",
-  USERS = "users",
-  ORDERS = "orders",
-  NEW = "new",
-  EDIT = "edit",
-}
+export const Routes = {
+  HOME: "/",
+  ABOUT: "/about",
+  CONTACT: "/contact",
+
+  AUTH: {
+    LOGIN: "/auth/login",
+    REGISTER: "/auth/register",
+    FORGOT_PASSWORD: "/auth/forgot-password",
+    RESET_PASSWORD: "/auth/reset-password",
+  },
+
+  PROFILE: "/profile",
+  DASHBOARD: "/dashboard",
+  SETTINGS: "/settings",
+  FAVORITES: "/favorites",
+  ORDERS: "/orders",
+
+  ADMIN: {
+    DASHBOARD: "/admin",
+    USERS: "/admin/users",
+    PRODUCTS: "/admin/products",
+    ORDERS: "/admin/orders",
+    SETTINGS: "/admin/settings",
+    ANALYTICS: "/admin/analytics",
+  },
+} as const;
+
+export const Pages = {
+  LOGIN: Routes.AUTH.LOGIN,
+  REGISTER: Routes.AUTH.REGISTER,
+  PROFILE: Routes.PROFILE,
+  HOME: Routes.HOME,
+} as const;
+
+export const Redirects = {
+  AFTER_LOGIN: Routes.PROFILE,
+  AFTER_LOGOUT: Routes.HOME,
+  UNAUTHORIZED: Routes.HOME,
+  LOGIN_PAGE: Routes.AUTH.LOGIN,
+} as const;
+
+export const RouteGroups = {
+  protected: [
+    Routes.PROFILE,
+    Routes.DASHBOARD,
+    Routes.SETTINGS,
+    Routes.FAVORITES,
+    Routes.ORDERS,
+  ],
+
+  admin: Object.values(Routes.ADMIN),
+
+  auth: Object.values(Routes.AUTH),
+
+  public: [
+    Routes.HOME,
+    Routes.ABOUT,
+    Routes.CONTACT,
+  ],
+} as const;
 
 export enum InputTypes {
   TEXT = "text",

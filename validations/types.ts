@@ -9,3 +9,14 @@ export interface SignUpFormValues {
   password: string;
   confirmPassword: string;
 }
+
+export type UpdateProfileFormValues = {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  street_address?: string;
+  image?: string;
+  country?: string;
+  city?: string;
+};

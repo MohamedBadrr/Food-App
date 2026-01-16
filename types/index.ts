@@ -40,3 +40,5 @@ export type CustomError = {
   errors?: Record<string, string[]>;
   status: number;
 };
+
+

@@ -14,3 +14,17 @@ export const ContactUsValidationSchema = Yup.object({
 });
 
 
+export const UpdateProfileSchema = Yup.object({
+  id:Yup.string(),
+  name: Yup.string().required("Name is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  phone: Yup.string()
+    .matches(/^[0-9]*$/, "Phone number must contain only numbers")
+    .nullable(),
+  street_address: Yup.string().nullable(),
+  country: Yup.string().nullable(),
+  city: Yup.string().nullable(),
+  image: Yup.string().nullable(),
+});

@@ -75,16 +75,15 @@ export const loginUser = async ({
   password 
 }: LoginProps): Promise<AuthResult> => {
   try {
-    // Get user by email
+    // Get user by email with all fields
     const { data, error } = await supabase
       .from("users")
-      .select("*")
+      .select("id, email, name, password, image, role, country, city, street_address, phone, created_at, updated_at")
       .eq("email", email)
       .single();
 
-    // Check if user exists - Supabase returns error when no record found
+    // Check if user exists
     if (error) {
-      // Check if it's a "not found" error (PGRST116) or any other error
       if (error.code === "PGRST116" || error.message.includes("No rows")) {
         return {
           success: false,
@@ -97,7 +96,6 @@ export const loginUser = async ({
       };
     }
 
-    // Double check if data exists
     if (!data) {
       return {
         success: false,
@@ -107,7 +105,7 @@ export const loginUser = async ({
 
     const user = data as User;
 
-    // Check if user has a password (OAuth users might have empty password)
+    // Check if user has a password
     if (!user.password || user.password.trim() === "") {
       return {
         success: false,
@@ -145,7 +143,7 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
   try {
     const { data, error } = await supabase
       .from("users")
-      .select("*")
+      .select("id, email, name, password, image, role, country, city, street_address, phone, created_at, updated_at")
       .eq("email", email)
       .single();
 
