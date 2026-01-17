@@ -19,4 +19,5 @@ export type UpdateProfileFormValues = {
   image?: string;
   country?: string;
   city?: string;
+  file?: File | null;
 };

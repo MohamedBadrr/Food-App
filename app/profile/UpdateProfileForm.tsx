@@ -8,9 +8,14 @@ import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { UserProfile } from "../../services/user/getMe";
-const UpdateProfile = ({ profile }: { profile: UserProfile }) => {
+const UpdateProfile = ({
+  profile,
+  selectedFile,
+}: {
+  profile: UserProfile;
+  selectedFile: File | null;
+}) => {
   const router = useRouter();
-  // const { update } = useSession();
   const initialValues = {
     id: profile.id,
     name: profile.name ?? "",
@@ -41,7 +46,7 @@ const UpdateProfile = ({ profile }: { profile: UserProfile }) => {
       validationSchema={UpdateProfileSchema}
       enableReinitialize
       onSubmit={(values) => {
-        mutate(values);
+        mutate({ ...values, file: selectedFile ?? null });
       }}
     >
       {({ isValid }) => (

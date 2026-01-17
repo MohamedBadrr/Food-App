@@ -58,7 +58,7 @@ export function UserSettings({ profile }: { profile: UserProfile }) {
             src={profile.image ?? "/assets/profileIamge.png"}
             width={50}
             height={50}
-            className="rounded-full"
+            className="rounded-full w-12! h-12!"
           />
           <h1>{profile.name}</h1>
         </DropdownMenuLabel>

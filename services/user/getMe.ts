@@ -9,6 +9,7 @@ export type UserProfile = {
   street_address: string;
   city: string;
   country: string;
+  file?: File | null
 };
 export const getMe = async (): Promise<UserProfile>=> {
   const session = await auth();

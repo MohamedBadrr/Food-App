@@ -13,9 +13,8 @@ export const ContactUsValidationSchema = Yup.object({
     .min(3, "at least 3 characters."),
 });
 
-
 export const UpdateProfileSchema = Yup.object({
-  id:Yup.string(),
+  id: Yup.string(),
   name: Yup.string().required("Name is required"),
   email: Yup.string()
     .email("Invalid email address")
@@ -26,5 +25,5 @@ export const UpdateProfileSchema = Yup.object({
   street_address: Yup.string().nullable(),
   country: Yup.string().nullable(),
   city: Yup.string().nullable(),
-  image: Yup.string().nullable(),
+  file: Yup.mixed().nullable().notRequired(),
 });
