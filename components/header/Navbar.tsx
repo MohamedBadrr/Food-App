@@ -42,7 +42,7 @@ const Navbar = ({ closeOnNavigate = false }: NavbarProps) => {
             href={"/dashboard"}
             className="relative w-fit text-base font-semibold font-playfair italic transition-all duration-300 group"
           >
-            {"dashboard"}
+            {"Dashboard"}
             <span
               className={`absolute left-0 -bottom-1 h-0.5 bg-primary transition-all duration-300 ${
                 pathname === "/dashboard" ? "w-full" : "w-0 group-hover:w-full"
