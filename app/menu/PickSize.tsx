@@ -2,7 +2,7 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { formatCurrency } from "@/lib/formatter";
-import { ProductSize } from "@/types/Products";
+import { ProductSize } from "@/types/Product";
 import { useFormikContext } from "formik";
 
 export function PickSize({
@@ -13,10 +13,10 @@ export function PickSize({
   itemPrice: number;
 }) {
   const { values, setFieldValue } = useFormikContext<{ size: ProductSize }>();
-  const selectedSize = values.size;;
-    const handelSelect = (value: ProductSize) => {
-      setFieldValue("size", value);
-    };
+  const selectedSize = values.size;
+  const handelSelect = (value: ProductSize) => {
+    setFieldValue("size", value);
+  };
   return (
     <RadioGroup defaultValue="comfortable" className="mb-5">
       <p className="text-primary mx-auto font-bold">Pick your Size</p>

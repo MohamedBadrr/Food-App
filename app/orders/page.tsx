@@ -9,7 +9,7 @@ import MyOrdersTable from "./_components/MyOrdersTable";
 
 const MyOrders = async () => {
   const profile = await getMe();
-
+  if (!profile) return;
   return (
     <main className="py-20 container min-h-screen">
       <h1 className="text-[55px] font-playfair text-center">My Orders</h1>

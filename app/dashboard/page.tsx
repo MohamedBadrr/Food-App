@@ -4,7 +4,6 @@ export const metadata = {
     "Admin dashboard for managing products, categories, users, and orders.",
 };
 
-import { getMe } from "@/services/user/getMe";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductsTab from "./ProductsTab";
 import {
@@ -19,7 +18,6 @@ import CategoriesTab from "./CategoriesTab";
 import UsersTab from "./UsersTab";
 import OrdersTab from "./OrdersTab";
 const Dashboard = async () => {
-  const profile = await getMe();
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({

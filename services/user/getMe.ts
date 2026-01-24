@@ -5,7 +5,7 @@ const isUuid = (v?: string) =>
   !!v &&
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v);
 
-  export type UserProfile = {
+export type UserProfile = {
   id: string;
   name: string;
   email: string;
@@ -15,15 +15,15 @@ const isUuid = (v?: string) =>
   city: string;
   country: string;
   role: "ADMIN" | "USER";
-  file?: File | null
+  file?: File | null;
 };
-export const getMe = async () : Promise<UserProfile> => {
+
+export const getMe = async (): Promise<UserProfile | null> => {
   const session = await auth();
 
   const userId = session?.user?.id as string | undefined;
   const emailRaw = session?.user?.email as string | undefined;
   const email = emailRaw?.toLowerCase();
-
 
   if (!userId && !email) return null;
 
@@ -35,9 +35,9 @@ export const getMe = async () : Promise<UserProfile> => {
     ? base.eq("id", userId!)
     : base.eq("email", email!);
 
-  const { data, error } = await query.maybeSingle();
-
+  const { data, error } = await query.maybeSingle<UserProfile>();
 
   if (error || !data) return null;
+
   return data;
 };
