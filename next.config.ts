@@ -1,13 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: [
-      "kzlzcjiibhmfjffxhyft.supabase.co",
-      "lh3.googleusercontent.com",
-      "res.cloudinary.com",
-      "*",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "kzlzcjiibhmfjffxhyft.supabase.co",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
     ],
   },
 };
