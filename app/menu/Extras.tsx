@@ -2,7 +2,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { formatCurrency } from "@/lib/formatter";
-import { ProductExtra } from "@/types/Products";
+import { ProductExtra } from "@/types/Product";
 import { useFormikContext } from "formik";
 type FormValues = {
   extras?: ProductExtra[];
