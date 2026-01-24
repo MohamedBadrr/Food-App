@@ -1,6 +1,6 @@
 import Image from "next/image";
 import AddToCardButton from "./AddToCardButton";
-import { Product } from "@/types/Products";
+import { Product } from "@/types/Product";
 
 const MenuItem = (props: Product) => {
   return (
